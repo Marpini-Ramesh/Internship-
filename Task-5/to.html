@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Ramesh Marpini</h1>
+        <p>Just Because you are awake..!<br>
+            Doesn't mean to stop dreaming...!</p>
+    </header>
+    <nav>
+        <a href="index.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="to.html">To-Do List</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="todo-box">
+        <h1>To-Do List</h1>
+        <input type="text" id="todo-input" placeholder="Add a new task" required>
+        <button onclick="addTask()">Add Task</button>
+        <div class="todo-list">
+            <ol id="todo-list">
+            </ol>
+        </div>
+    </div>
+    <script>
+           function addTask() {
+            const input = document.getElementById('todo-input');
+            const task = input.value.trim();
+            if (task) {
+                const list = document.getElementById('todo-list');
+                const listItem = document.createElement('li');
+
+                const taskText = document.createElement('span');
+                taskText.textContent = task;
+
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'X';
+                deleteButton.onclick = function() {
+                    list.removeChild(listItem);
+                };
+
+                listItem.appendChild(taskText);
+                listItem.appendChild(deleteButton);
+                list.appendChild(listItem);
+
+                input.value = '';
+            }
+        }
+    </script>
+</body>
+</html>
